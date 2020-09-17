@@ -319,20 +319,8 @@ namespace Plank
 		 */
 		protected override AnimationType on_clicked (PopupButton button, Gdk.ModifierType mod, uint32 event_time)
 		{
-			if (!is_window ())
-				if (button == PopupButton.MIDDLE
-					|| (button == PopupButton.LEFT && (App == null || App.get_windows ().length () == 0
-					|| (mod & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))) {
-					launch ();
-					return AnimationType.BOUNCE;
-				}
-			
-			if (button == PopupButton.LEFT && App != null && App.get_windows ().length () > 0) {
-				WindowControl.smart_focus (App, event_time);
-				return AnimationType.DARKEN;
-			}
-			
-			return AnimationType.NONE;
+			launch ();
+			return AnimationType.BOUNCE;
 		}
 		
 		/**
